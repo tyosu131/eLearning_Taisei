@@ -1,6 +1,6 @@
- <%= form_with(model: @user, local: true) do |f| %>
+<%= form_with(model: @user, local: true) do |f| %>
 
-    <%#= render 'shared/error_messages', object: f.object %>
+    <%= render 'shared/error_messages', object: f.object %>
     <div class="mb-3">
         <%= f.text_field :name, class:"form-control", placeholder: "Name" %>
     </div>
@@ -14,4 +14,4 @@
         <%= f.password_field :pass_confirmation, class:"form-control", placeholder: "Password Confirmation" %>
     </div>
     <%= f.submit btn_msg, class:"btn btn-success w-100" %>
-<% end%>  
+<% end%>

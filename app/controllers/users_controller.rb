@@ -13,13 +13,13 @@ class UsersController < ApplicationController
    end
   end
 
-  def show
-    @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page], per_page: 12)
-    @micropost = current_user.microposts.build if logged_in?
-  end
+  # def show
+  #   @user = User.find(params[:id])
+  #   @microposts = @user.microposts.paginate(page: params[:page], per_page: 12)
+  #   @micropost = current_user.microposts.build if logged_in?
+  # end
 
-  private
+  # private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end

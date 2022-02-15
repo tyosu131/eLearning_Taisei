@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
       log_in(user)
       flash[:saccess] = "Successfully logged in"
       redirect_to root_url
-   else
+    else
       flash[:danger] = "Invaild Credentials"
       redirect_to login_url
-   end 
+    end 
   end
 
   def destroy

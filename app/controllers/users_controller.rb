@@ -8,9 +8,9 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Successfully Saved"
       redirect_to root_url
-   else
-    render 'new'
-   end
+    else
+      render 'new'
+    end
   end
   
   # private

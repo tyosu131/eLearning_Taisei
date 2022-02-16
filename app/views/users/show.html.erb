@@ -9,9 +9,6 @@
                 <%= gravatar_for(@user, size: 52) %>
                 <h5><%= @user.name %></h5>
                 <p><%= @user.email %></p>
-
-                <%= render 'follow_form' if logged_in? %>
-                <%= render 'shared/stats' %>
             </div>
         </div>
     </div>

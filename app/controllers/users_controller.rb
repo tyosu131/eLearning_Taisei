@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, except: [:new, :create]
+  before_action :correct_user, only: :edit
+  before_action :only_loggedin_users, only: [:index, :show, :edit, :update, :destroy]
+
   def new
     @user = User.new
   end

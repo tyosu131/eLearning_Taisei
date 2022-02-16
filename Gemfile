@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.5'
 
+gem 'faker'
+gem 'will_paginate', '~> 3.2', '>=3.2.1'
+gem 'will_paginate-bootstrap4', '~> 0.2.2'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.0.4', '>= 6.0.4.4'
 # Use mysql as the database for Active Record

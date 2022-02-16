@@ -15,14 +15,14 @@ module SessionsHelper
     session.delete(:user_id)
   end
 
-  # def logged_in_user
-  #     unless logged_in?
-  #         flash[:info] = "Please login first."
-  #         redirect_to login_url
-  #     end
-  # end
+  def logged_in_user
+      unless logged_in?
+          flash[:info] = "Please login first."
+          redirect_to login_url
+      end
+  end
 
-  # def current_user?(user)
-  #     return true if user == current_user
-  # end
+  def current_user?(user)
+      return true if user == current_user
+  end
 end

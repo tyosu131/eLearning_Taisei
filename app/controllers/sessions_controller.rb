@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email])
     if user && user.authenticate(params[:session][:password])
       log_in(user)
-      flash[:saccess] = "Successfully logged in"
+      flash[:success] = "Successfully logged in"
       redirect_to root_url
     else
       flash[:danger] = "Invaild Credentials"

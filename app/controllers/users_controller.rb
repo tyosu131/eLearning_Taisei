@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, except: [:new, :create]
+  before_action :correct_user, only: :edit
+  before_action :only_loggedin_users, only: [:index, :show, :edit, :update, :destroy]
+
   def new
     @user = User.new
   end
@@ -10,6 +14,20 @@ class UsersController < ApplicationController
       redirect_to root_url
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = "Proofile Update"
+      redirect_to root_url
+    else
+      render 'edit'
     end
   end
 

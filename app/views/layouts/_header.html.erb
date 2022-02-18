@@ -28,6 +28,11 @@
                             <%= link_to "Logout", logout_path, class:"dropdown-item" %>
                         </div>
                     </li>
+                    <% if admin_user? %>
+                        <li class="nav-item">
+                            <%= link_to "Admin", admin_categories_new_path, class: "nav-link" %>
+                        </li>
+                    <% end %> 
                 </ul>
             <% else %>
                 <ul class="navbar-nav mr-auto">

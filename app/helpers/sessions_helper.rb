@@ -16,13 +16,17 @@ module SessionsHelper
   end
 
   def logged_in_user
-      unless logged_in?
-          flash[:info] = "Please login first."
-          redirect_to login_url
-      end
+    unless logged_in?
+      flash[:info] = "Please login first."
+      redirect_to login_url
+    end
   end
 
   def current_user?(user)
-      return true if user == current_user
+    return true if user == current_user
+  end
+
+  def admin_user?
+    current_user.is_admin
   end
 end

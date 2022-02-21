@@ -40,6 +40,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to users_url
+  end
+
   def following
     @title = "Following"
     @user = User.find(params[:id])

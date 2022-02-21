@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :microposts
   validates :name, presence: true, length: { maximum: 50}
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 50},
@@ -24,10 +25,10 @@ class User < ApplicationRecord
   end
 
   def follow(other_user)
-      active_relationships.create!(followed_id: other_user.id)
+    active_relationships.create!(followed_id: other_user.id)
   end
 
   def unfollow(other_user)
-      active_relationships.find_by(followed_id: other_user.id).destroy
+    active_relationships.find_by(followed_id: other_user.id).destroy
   end
 end

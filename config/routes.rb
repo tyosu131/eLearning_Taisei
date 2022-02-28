@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'categories/new'
-    get 'categories/create'
-    get 'categories/show'
-    get 'categories/index'
+    resources :categories
   end
+  
+
   root 'pages#home'
 
   get "/login",to: 'sessions#new'

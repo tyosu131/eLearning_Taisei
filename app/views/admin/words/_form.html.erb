@@ -1,9 +1,12 @@
 <%= form_with(model: [:admin, @category, @word], local: true) do |f| %>
     <p class="text-left">Words</p>
     <%= f.text_field :word, class:"form-control" %>
-    <%# <p class="text-left">Choice</p> %>
-    <%#= f.text_field :choice, class:"form-control" %>
-
+    <%= f.fields_for :choices do |c| %>
+        <p class ="text-left">Choice</p>
+        <%= c.text_field :choice, class:"form-control" %>
+        <%= c.check_box :is_answer, id: :choice_checkbox,:as => :boolean %>Correct
+    <% end %>
+    <p></p>
     <%= f.submit :submit, class: 'btn btn-primary' %>
     <%= link_to "back", admin_category_path(@category), class: 'btn btn-danger' %>
 <% end %>

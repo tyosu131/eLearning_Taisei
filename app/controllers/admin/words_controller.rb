@@ -29,8 +29,7 @@ class Admin::WordsController < ApplicationController
   def update
     @category = Category.find(params[:category_id])
     @word = Word.find(params[:id])
-    if @word.update_attributes!(word_params) 
-      abort
+    if @word.update_attributes(word_params) 
       flash[:success] = "Updated"
       redirect_to admin_category_path(@category)
     else

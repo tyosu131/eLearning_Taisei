@@ -1,0 +1,18 @@
+<div class="container pt-4">    
+    <div class="container mt-4 text-center">
+        <h1></h1>
+        <p class="text-center lead">Select your answer</p>
+        <div class="card">
+            <div class="card-header">
+                <%  %>
+            </div>
+            <div class="card-body mx-auto row">
+        </div>
+    </div>
+    <% @words.each do |word| %>
+        <%= word.word %>
+        <% word.choices.each do |choice| %>
+            <%= link_to choice.choice, category_lesson_answers_path(category_is: @category, lesson: @lesson, word_id: word.id, choice_id: choice.id, page: @words.next_page), method: :post %>
+        <% end %>
+    <% end %>
+</div>

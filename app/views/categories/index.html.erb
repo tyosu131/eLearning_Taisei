@@ -1,0 +1,30 @@
+<div class="container d-flex flex-fill flex-column">    
+    <div class="mt-4 text-center">
+        <h1>Categories</h1>
+    </div>
+    <% if @categories.any? %>
+        <% @categories.each do |category| %>
+            <div class="col-md-6 my-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="mb-0"><%= category.title %></h5>
+                                </div>
+                            </div>
+                        </h5>
+                        <hr class="my-3">
+                        <p class="card-text"><%= category.description %></p>
+                        <p class="text-right">
+                            <%= button_to 'take lesson', category_lessons_path(category_id: category.id), class: 'btn btn-primary' %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    <% else %>
+        
+    <% end %>
+    <%= will_paginate %>
+</div>

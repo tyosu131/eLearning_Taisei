@@ -7,12 +7,13 @@
                 <%  %>
             </div>
             <div class="card-body mx-auto row">
+                <% @words.each do |word| %>
+                    <%= word.word %>
+                    <% word.choices.each do |choice| %>
+                        <%= link_to choice.choice, category_lesson_answers_path(lesson: @lesson, word_id: word.id, choice_id: choice.id, page: @words.next_page), method: :post, class: 'btn btn-primary' %>
+                    <% end %>
+                <% end %>
+            </div>
         </div>
     </div>
-    <% @words.each do |word| %>
-        <%= word.word %>
-        <% word.choices.each do |choice| %>
-            <%= link_to choice.choice, category_lesson_answers_path(category_is: @category, lesson: @lesson, word_id: word.id, choice_id: choice.id, page: @words.next_page), method: :post %>
-        <% end %>
-    <% end %>
 </div>

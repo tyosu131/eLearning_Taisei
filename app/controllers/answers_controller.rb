@@ -15,11 +15,20 @@ class AnswersController < ApplicationController
     @answer.save
     unless params[:page].nil?
       redirect_to new_category_lesson_answer_path(@category, @lesson, page: params[:page])
+    else
+      result = 0 # temporary container for total score
+      @lesson.answers.each do |answer| # looping thru all the answers user picked
+        if answer.choice.is_answer? # checking is user's choice is the correct one
+          result += 1 # result = result + 1
+        end
+        @lesson.update_attributes(:result => result) # updating result column
+      end
+      redirect_to category_lesson_path(@category, @lesson)
     end  
   end
 
   private
   def answer_params
-    params.require(:answer).permit(:lesson_id, :word_id, :choice_id)
+    params.permit(:lesson_id, :word_id, :choice_id)
   end
 end

@@ -17,14 +17,24 @@
                         <hr class="my-3">
                         <p class="card-text"><%= category.description %></p>
                         <p class="text-right">
-                            <%= button_to 'take lesson', category_lessons_path(category_id: category.id), class: 'btn btn-primary' %>
+                            <% if @lessons.any? %>
+                                <% @lessons.each do |lesson| %>
+                                    <% if category.id == lesson.category.id %>
+                                        <%= link_to 'see result', category_lesson_path(category_id: category.id, id: lesson.id) %>
+                                    <% else %>
+                                        <%= button_to 'take lesson', category_lessons_path(category_id: category.id), class: 'btn btn-primary' %>
+                                    <% end %>
+                                <% end %>
+                            <% else %>
+                                <%= button_to 'take lesson', category_lessons_path(category_id: category.id), class: 'btn btn-primary' %>
+                            <% end %>
                         </p>
                     </div>
                 </div>
             </div>
         <% end %>
     <% else %>
-        
+        <h2 class="text-center">No available lessons yet.</h2>
     <% end %>
     <%= will_paginate %>
 </div>

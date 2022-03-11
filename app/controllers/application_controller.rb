@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  include LessonsHelper
 
   def only_admin
     if admin_user?

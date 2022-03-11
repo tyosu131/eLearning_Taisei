@@ -1,0 +1,45 @@
+<div class="container d-flex flex-fill flex-column">    
+    <div class="mt-4 text-center">
+        <h1>Categories</h1>
+    </div>
+    <% if @categories.any? %>
+        <div class="row">
+            <% @categories.each do |category| %>
+                <div class="col-md-6 my-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="mb-0"><%= category.title %></h5>
+                                        <span>
+                                            <% if is_done(category) %>
+                                                <%= get_result(category) %> out of <%= category.words.count %>
+                                            <% end %>
+                                        </span>
+                                    </div>
+                                </div>
+                            </h5>
+                            <hr class="my-3">
+                            <p class="card-text"><%= category.description %></p>
+                            <p class="text-right">
+                                <% if category.words.any? %>
+                                    <% if is_done(category) %>
+                                        <%= link_to 'see result', category_lesson_path(category.id, is_done(category)) %>
+                                    <% else %>
+                                        <%= button_to 'take lesson', category_lessons_path(category_id: category.id), class: 'btn btn-primary' %>
+                                    <% end %>
+                                <% else %>
+                                    Not available
+                                <% end %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    <% else %>
+        <h2 class="text-center">No available lessons yet.</h2>
+    <% end %>
+    <%= will_paginate %>
+</div>

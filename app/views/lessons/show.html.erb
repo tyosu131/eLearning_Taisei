@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="container pt-4">
+        <div class="container text-center">
+            <h2><%=  %></h2>
+            <p class="text-center">This is your result.</p>
+            <div class="row">
+                <div class="col-10 mx-auto my-4">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Word</th>
+                                <th scope="col">Your Answer</th>
+                                <th scope="col">Correct Answer</th>
+                                <th scope="col">Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @answers.each do |answer| %>
+                                <tr>
+                                    <td><%= answer.word.word %></td>
+                                    <td><%= answer.choice.choice %></td>
+                                    <td>
+                                        <% @words.each do |word| %>
+                                            <% word.choices.each do |choice| %>
+                                                <% if word.id == answer.word.id %>
+                                                    <% if choice.is_answer? %>
+                                                        <%= choice.choice %>
+                                                    <% end %>
+                                                <% end %>
+                                            <% end %> 
+                                        <% end %>
+                                    </td>
+                                    <td>
+                                        <% if answer.choice.is_answer? %>
+                                            ✓
+                                        <% else %>
+                                            ✕
+                                        <% end %>
+                                    </td>
+                                </tr>
+                            <% end %>    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

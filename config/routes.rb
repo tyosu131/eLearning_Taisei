@@ -24,6 +24,14 @@ Rails.application.routes.draw do
   resources :users
   get '/signup', to: 'users#new'
 
+  resources :categories, only: [:index] do
+    resources :lessons do
+      resources :answers, only: [:new, :create]
+    end
+  end
+
+  
+
   resources :relationships, only: [:create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

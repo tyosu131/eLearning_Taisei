@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :microposts
+  has_many :lessons
+  has_many :answers, through: :lessons
   validates :name, presence: true, length: { maximum: 50}
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 50},

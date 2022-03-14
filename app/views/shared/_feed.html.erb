@@ -1,0 +1,6 @@
+<% if @activities.any? %>
+    <ol class="feed-lists">
+        <%= render partial: 'shared/feed_item' %>
+    </ol>
+    <%= will_paginate @activities %>
+<% end %>

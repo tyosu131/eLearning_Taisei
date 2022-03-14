@@ -1,3 +1,36 @@
-<div class="jumbotron">
-    <h1 class="display-4">This is home page.</h1>
-</div>
+<% if logged_in?%>
+    <div class="jumbotron">
+        <h1 class="display-4 text-center">Dashboard.</h1>
+    </div>
+
+    <div>
+        <div class="row mt-4">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        User Infomation
+                    </div>
+                    <div class="card-body text-center">
+                        <%= gravatar_for(@user, size: 52) %>
+                        <h5><%= @user.name %></h5>
+                        <p><%= @user.email %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-header">
+                        Activity Feed
+                    </div>
+                    <div class="card-body">
+                        <%= render 'shared/feed' %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% else %>
+    <div class="jumbotron">
+        <h1 class="display-4 text-center">Home Page</h1>
+    </div>
+<% end %>

@@ -27,11 +27,12 @@ Rails.application.routes.draw do
   resources :categories, only: [:index] do
     resources :lessons do
       resources :answers, only: [:new, :create]
+      resources :activities, module: :lessons
     end
   end
 
-  
-
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy] do
+    resources :activities, module: :relationships
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

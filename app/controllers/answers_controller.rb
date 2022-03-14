@@ -5,6 +5,7 @@ class AnswersController < ApplicationController
     @words = @category.words.paginate(page: params[:page], per_page: 1)
     @lesson = Lesson.find(params[:lesson_id])
     @answer = Answer.new
+    @lesson.create_activity(user: current_user)
   end
 
   def create

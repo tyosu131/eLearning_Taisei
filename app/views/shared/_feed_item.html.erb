@@ -1,0 +1,17 @@
+<% @activities.each do |activity| %>
+    <li class="col-12 my-4">
+        <%# start of sentence %>
+        <% if activity.user.name == current_user.name %>
+            <%= link_to "You", activity.user %>
+        <% else %>
+            <%= link_to activity.user.name, activity.user %>
+        <% end %>
+
+        <%# this action - followed or took the lesson %>
+        <% if activity.action_type == "Relationship" %>
+            followed <%= link_to activity.action.followed.name, activity.action.followed %>
+        <% else %>
+            took the lesson <%= link_to activity.action.category.title, category_lesson_path(activity.action.category, activity.action_id) %>
+        <% end %>
+    </li>
+<% end %>
